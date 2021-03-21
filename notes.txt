@@ -1,0 +1,38 @@
+What is vue?
+- front end JS framework for building websites and user interfaces
+
+- geneereally used to create single page apps that run on the client but it can be used to create full stack apps by making http reqs to a backened server 
+- popular w node.js and express (mevn stack)
+
+- vue can also run on the server-side by using a SSR framework like Nuxt
+ 
+
+Why use vue?
+- create dynamic frontend apps and websites
+- easy learning curve
+- easy to itnegrate with other projs
+- fast and lightweight
+- virtual DOM
+- extremely popular and great community
+
+
+pre-reqs
+- js fundamentals
+- async programming
+- array methods
+- fetch api / http reqs 
+- npm 
+
+Working with state/data 
+
+Components can have their own state which can determine how a specific component behaves and what data is displayed
+
+Some state may be local to a specific component and some may be "global" or "app" level state that needs to be shared with multiple components
+
+Vuex is a state manager for global state in larger apps
+
+Options API vs Composition API
+- traditionally use options api
+- vue 3 has Composition api which aims to address code reusability and redability in vue 3, especially in larger applications
+
+
