@@ -1,8 +1,7 @@
 <template>
     <header>
         <h1>{{title}}</h1>
-        <Button text = "Add Task" color = "green" />
-        <!-- <Button text = "Update Task" color = "blue" /> -->
+        <Button @btn-click="$emit('toggle-add-task')" :text = "showAddTask ? 'Close' : 'Add Task'" :color = "showAddTask ? 'red' : 'green' " />
 
     </header>
 </template>
@@ -14,7 +13,8 @@ export default {
     // props: ['title'] - 1 way
     // alternate way define props as a object and give title a specific type
     props: {
-        title: String
+        title: String,
+        showAddTask: Boolean
     },
 
     components: {
