@@ -1,29 +1,24 @@
 <template>
   <div class="container">
     <Header @toggle-add-task="toggleAddTask" title = "Task Tracker" :showAddTask="showAddTask" />
-    <div v-if="showAddTask">
-        <AddTask @add-task="addTask" />
-    </div>
-    <!-- embed the header here -->
-    <Tasks @toggle-reminder= "toggleReminder" @delete-task = "deleteTask" :tasks = "tasks" />
+    <router-view :showAddTask="showAddTask"></router-view>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from './components/Header'
-import Tasks from './components/Tasks'
-import AddTask from './components/AddTask'
+import Footer from './components/Footer'
 
+// we can pass in props to router view component, and catch it in any of our view components, by accepting props in that view 
 export default {
   name: 'App',
   components: {
     Header, // register the component here
-    Tasks,
-    AddTask
+    Footer
   },
   data(){
     return {
-      tasks: [],
       showAddTask : false
     }
   },
@@ -31,43 +26,8 @@ export default {
     toggleAddTask(){
       this.showAddTask = !this.showAddTask
     },
-    addTask(task){
-      this.tasks = [...this.tasks,task]
-
-    },
-
-    deleteTask(id){
-      if(confirm('are you sure?')) {
-        this.tasks = this.tasks.filter((task) => task.id !== id )
-      }
-    },
-    toggleReminder(id){
-      this.tasks = this.tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task
-      )
-    },
   },
-  created(){
-    this.tasks = [
-      {
-        id: 1,
-        text: 'Doc appt',
-        day:'may 5',
-        reminder : true
-      }, 
-      {
-        id:2,
-        text:'meeting',
-        day:'march 3rd',
-        reminder:true
-      },
-      {
-        id:3,
-        text:'food',
-        day: 'march 3', 
-        reminder:false
-      }
-    ]
-  }
+
 }
 </script>
 

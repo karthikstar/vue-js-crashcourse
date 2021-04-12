@@ -1,7 +1,10 @@
 <template>
     <header>
         <h1>{{title}}</h1>
-        <Button @btn-click="$emit('toggle-add-task')" :text = "showAddTask ? 'Close' : 'Add Task'" :color = "showAddTask ? 'red' : 'green' " />
+        <Button v-show="homePage" 
+        @btn-click="$emit('toggle-add-task')" 
+        :text = "showAddTask ? 'Close' : 'Add Task'" 
+        :color = "showAddTask ? 'red' : 'green' " />
 
     </header>
 </template>
@@ -19,6 +22,16 @@ export default {
 
     components: {
         Button
+    },
+    computed: {
+        // setting true false to home page and using v-show above, to restirct component to just home page route. and ensure it doesnt show up on the about page.
+        homePage() {
+            if(this.$route.path === '/'){
+                return true
+            } else {
+                return false
+            }
+        }
     }
 
     // props: {
